@@ -1,0 +1,1220 @@
+/*
+Structure fichier CSS :
+
+1- Css commun
+2- Spécifique Accueil
+3- Spécifique Contact
+4- Spécifique singlecar
+5- Media queries
+*/
+
+/************************************1- CSS COMMUN*********************************************************/
+
+:root {
+
+    /*Eléments de la charte graphique*/
+
+    --ClubAutoBlanc: #FFFFFF;
+    --ClubAutoOrange: #FAB637;
+    --ClubAutoRouge: #FF4848;
+    --ClubAutoMarron: #CC6119;
+    --ClubAutoGris: #ECEFF3;
+    --ClubAutoGrisTransp: rgba(236, 239, 243, 0.6);
+    --ClubAutoNoir: #232628;
+    --ClubAutoBleu: #6C98E1;
+
+    --ClubAutoTexte: 'Open Sans', sans-serif;
+    --ClubAutoTitres: 'Montserrat', sans-serif;
+
+    --ClubAutoMaxWidth: 1366px;
+    --ClubAutoInnerWidth: 1200px;
+
+    scroll-behavior: smooth;
+
+}
+
+/*Coloration ponctuelle texte*/
+.whiteTouch {
+    color: var(--ClubAutoBlanc);
+}
+
+.blueTouch {
+    color: var(--ClubAutoBleu);
+}
+
+.brownTouch {
+    color: var(--ClubAutoMarron);
+}
+
+.isBold {
+    font-weight: bolder;
+}
+
+.isBigger {
+    font-size: 1.5em;
+}
+
+html {
+    box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+body {
+    max-width: var(--ClubAutoMaxWidth);
+    margin: 0 auto;
+    font-family: var(--ClubAutoTexte);
+    color: var(--ClubAutoGris);
+}
+
+h1,
+h2,
+h3 {
+    font-family: var(--ClubAutoTitres);
+}
+
+a {
+    text-decoration: none;
+}
+
+a:visited:link {
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+
+input,
+button,
+textarea {
+    font-size: inherit;
+    font-family: var(--ClubAutoTexte);
+}
+
+header, #wrapMenu, .cardCarsInfo, footer {
+  background-color: var(--ClubAutoNoir);
+}
+
+/*Header*/
+
+header {
+    background-color: var(--ClubAutoNoir);
+}
+
+.mobileMenu {
+    position: fixed;
+    right: 10px;
+    top: -22px;
+    z-index: 1200;
+}
+
+.mobileMenu svg {
+    margin-top: 30px;
+    margin-right: 15px;
+    width: 50px;
+}
+
+.mobileMenu:hover>svg path {
+    fill: var(--ClubAutoMarron);
+}
+
+header h1 {
+    padding-left: 3.5vw;
+    padding-bottom: 20px;
+    margin-bottom: auto;
+    color: var(--ClubAutoBlanc);
+    font-size: 2em;
+    margin-top: auto;
+}
+
+#headInfos h1 {
+    margin-top: auto;
+}
+
+#headInfos {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: start;
+    align-items: start;
+    color: var(--ClubAutoGris);
+}
+
+#mainTitle,
+#adress,
+#horaires,
+#headerSocials {
+    display: none;
+}
+
+
+#headInfos div {
+    margin-top: 80px;
+}
+
+#headInfos div img {
+    width: 50px;
+    height: 50px;
+}
+
+#headInfos div a svg {
+    width: 30px;
+    height: 30px;
+    transition: fill 0.5s;
+}
+
+#headInfos div a:hover>svg {
+    fill: var(--ClubAutoMarron);
+}
+
+.iconTextGrid {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: start;
+}
+
+.iconTextGrid p {
+    margin-top: 0;
+    margin-left: 2px;
+}
+
+.iconTextGrid div {
+    display: flex;
+    flex-direction: column;
+}
+
+#horaires {
+    align-self: auto;
+}
+
+#horaires p {
+    margin-top: 0;
+}
+
+
+#headerSocials a {
+    display: flex;
+    width: 50px;
+    height: 50px;
+    background-color: rgb(59, 57, 57);
+    border-radius: 50%;
+    margin: 5px;
+    justify-content: center;
+    align-items: center;
+}
+
+#tel p {
+    text-transform: uppercase;
+}
+
+.flexContCol {
+    display: flex;
+    flex-direction: column;
+}
+
+#mainImg {
+    display: none;
+    height: 35vh;
+}
+
+#contactImg {
+    width: 100%;
+    grid-row: 1;
+    grid-column: 1;
+    object-fit: cover;
+    content: 50% 50%;
+    height: 300px;
+}
+
+/*Fin header*/
+
+
+/*NAVIGATION*/
+#wrapMenu {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    background-color: var(--ClubAutoNoir);
+    gap: 10px;
+    transition: display .5s;
+    font-weight: bold;
+    font-size: 1.2em;
+    transition: left 0.8s;
+    z-index: 900;
+}
+
+.hidden {
+    left: -1000px;
+}
+
+.visible {
+    left: 0;
+}
+
+#wrapMenu li {
+    list-style: none;
+    text-decoration: none;
+    border-bottom: 1px solid var(--ClubAutoMarron);
+    border-left: 2px solid var(--ClubAutoMarron);
+    padding: 10px;
+    margin: 10px;
+}
+
+#wrapMenu:first-child {
+    margin-top: 80px;
+}
+
+#wrapMenu li:hover>a {
+    color: var(--ClubAutoMarron);
+}
+
+#wrapMenu li a {
+    display: inline-block;
+    padding: .75em 1em;
+    text-decoration: none;
+    width: 100%;
+    color: var(--ClubAutoBlanc);
+    transition: color 0.5s;
+}
+
+.menuToggle {
+    display: none;
+
+}
+
+
+/*FIN NAVIGATION*/
+
+
+/*Footer*/
+footer {
+    width: 100%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-rows: auto auto;
+    background-color: var(--ClubAutoNoir);
+}
+
+#footerInfo {
+    margin: 40px 10px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(4, auto);
+    justify-items: center;
+    border-bottom: 1px solid var(--ClubAutoBlanc);
+}
+
+.info {
+    width: 98%;
+    display: flex;
+    flex-direction: column;
+    margin: 15px auto;
+}
+
+.info p {
+    margin-top: 0;
+}
+
+#mention {
+    justify-self: center;
+}
+
+.newsLetter {
+    display: flex;
+    align-content: center;
+}
+
+.newsLetter input {
+    height: 32px;
+    width: 90%;
+    margin-right: 0;
+    border: none;
+}
+
+.newsLetter a img {
+    width: 32px;
+    height: 32px;
+    margin: 0;
+    transition: border 0.5s;
+}
+
+.newsLetter a:hover>img {
+    border: 2.5px solid var(--ClubAutoBlanc);
+}
+
+.socials {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 10px;
+}
+
+.socials a {
+    width: 40px;
+    height: 40px;
+    background-color: rgb(59, 57, 57);
+    margin: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.socials a img {
+    width: 38px;
+    height: 38px;
+}
+
+.socials a svg {
+    width: 25px;
+    height: 25px;
+    transition: fill 0.5s;
+}
+
+.socials a:hover>svg {
+    fill: var(--ClubAutoMarron);
+}
+
+/*Fin Footer*/
+
+
+/************************************2- SPECIFIQUE Accueil******************************************************/
+
+/*Section présentation*/
+#presentation {
+    width: 90%;
+    margin: 25px auto;
+    /*display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));*/
+    color: var(--ClubAutoNoir);
+}
+
+#presentation article {
+    height: 100%;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr;
+    gap: 20px;
+
+}
+
+.cardText {
+    height: auto;
+}
+
+.presentationImg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    align-self: center;
+}
+
+.check {
+    margin-right: 15px;
+}
+
+#mainImg {
+    display: none;
+}
+
+/*Fin Section présentation*/
+
+
+/*Section vente ou location*/
+
+#saleOrLoc {
+    max-width: 100%;
+    margin: 0 auto;
+    background-image: url("../images/vente-location-600.webp");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    gap: 44px;
+}
+
+#saleOrLoc article a {
+    text-decoration: none;
+}
+
+.saleOrLocCard {
+    width: 100%;
+}
+
+.saleOrLocCard h2 {
+    max-width: 50%;
+    margin: 5% auto;
+    color: var(--ClubAutoNoir);
+}
+
+.saleOrLocCard p {
+    color: var(--ClubAutoBlanc);
+    max-width: 50%;
+    margin: 10px auto;
+}
+
+.locCard {
+    background-color: rgba(250, 182, 55, 0.8);
+}
+
+.saleCard {
+    background-color: rgba(255, 72, 72, 0.8);
+}
+
+/*Fin section vente ou location*/
+
+/*Section véhicules récents*/
+#newCars {
+    max-width: var(--ClubAutoMaxWidth);
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+}
+
+.decoTitle {
+    display: flex;
+    justify-content: center;
+    width: 90%;
+    margin: 20px auto;
+    border-bottom: var(--ClubAutoMarron) 2px solid;
+}
+
+#carsWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.cardCars {
+    width: 95vw;
+    margin: 0 auto;
+}
+
+.cardCars a:hover>div {
+    border: 2px solid var(--ClubAutoBleu);
+}
+
+
+.cardCarsInfo {
+    width: 100%;
+    display: flex;
+    flex-direction: column-reverse;
+    background-color: var(--ClubAutoNoir);
+    font-weight: bold;
+    margin-bottom: 20px;
+    height: 110px;
+}
+
+
+.cardCarsInfo hr {
+    width: 90%;
+    margin: 5px auto;
+    border: 2px solid var(--ClubAutoGris);
+}
+
+.cardCarsInfo p {
+    margin-left: 20px;
+    width: 60%;
+    font-size: 0.85em;
+}
+
+.priceTag {
+    margin-top: 1em;
+    margin-left: 1em;
+    padding: 10px;
+    background-color: var(--ClubAutoBleu);
+    align-self: flex-start;
+    color: var(--ClubAutoBlanc);
+    font-weight: bold;
+    font-size: 0.85em;
+}
+
+.isCrossed {
+    color: black;
+    font-size: 0.75em;
+    font-weight: lighter;
+    text-decoration: line-through;
+}
+
+#carsWrapper article img {
+    width: 100%;
+}
+
+/*Fin section véhicules récents*/
+
+/*Section Pourquoi nous ?*/
+
+#whyUs {
+    max-width: var(--ClubAutoInnerWidth);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+#whyUs h2,
+#whyUs h3 {
+    align-self: center;
+    color: var(--ClubAutoNoir);
+}
+
+#whyUsWrapper {
+    display: flex;
+    flex-direction: column;
+    margin: 20px auto;
+    gap: 20px;
+}
+
+.cardWhy {
+    max-width: 80%;
+    display: grid;
+    grid-template-areas: "icone titre"
+        " icone texte"
+        "icone texte";
+    gap: 20px;
+}
+
+.cardWhy img {
+    grid-area: icone;
+    width: 65px;
+}
+
+.cardWhy h3 {
+    text-transform: uppercase;
+    grid-area: titre;
+    margin-top: 0;
+    margin-bottom: 5px;
+    font-size: 0.9em;
+}
+
+.cardWhy p {
+    grid-area: texte;
+    margin: 0;
+    color: grey;
+    font-size: 0.9em;
+    align-self: flex-end;
+}
+
+.buttonWhy {
+    color: var(--ClubAutoBlanc);
+    font-weight: bold;
+    font-size: 1.4em;
+    padding: 15px 40px 15px 40px;
+    background-color: var(--ClubAutoBleu);
+    text-decoration: none;
+    justify-self: stretch;
+    text-align: center;
+    border: none;
+    margin: 25PX auto;
+    transition: background-color 0.5s, color 0.6s;
+}
+
+.buttonWhy:hover {
+
+    background-color: var(--ClubAutoMarron);
+    color: var(--ClubAutoNoir);
+}
+
+/*Fin Section Pourquoi nous*/
+
+/*Section conclusion*/
+
+#conclusion {
+    margin: 0 auto;
+    background-image: url("../images/vehicule3-600.webp");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: flex;
+}
+
+#conclusion article p {
+    color: var(--ClubAutoNoir);
+}
+
+#conclusion article a {
+    text-decoration: none;
+    color: var(--ClubAutoNoir);
+}
+
+/*Fin Section conclusion*/
+
+
+
+/************************************3- SPECIFIQUE CONTACT******************************************************/
+
+.mainTitleOtherPages {
+    font-size: 1.2em;
+    position: relative;
+    top: -50px;
+    height: 0;
+}
+
+
+
+
+/*Formulaire*/
+
+#contactForm {
+    background-color: var(--ClubAutoBlanc);
+    color: var(--ClubAutoNoir);
+    width: 95%;
+    margin: 0 auto;
+    padding: 15px;
+    gap: 25px;
+    position: relative;
+    top: -13%;
+    z-index: 800;
+}
+
+#contactContent {
+    background-color: #ECEFF3;
+    height: auto;
+    display: grid;
+}
+
+#inputsWrapper {
+    gap: 25px;
+}
+
+#contactForm p {
+    font-weight: bold;
+    font-size: 2em;
+    font-family: var(--ClubAutoTitres);
+}
+
+#contactForm input[type=submit] {
+    height: 60px;
+    color: var(--ClubAutoBlanc);
+    font-weight: bold;
+    font-size: 1.4em;
+    padding: 15px 40px 15px 40px;
+    background-color: var(--ClubAutoBleu);
+    text-decoration: none;
+    justify-self: stretch;
+    text-align: center;
+    border: none;
+}
+
+#contactForm input[type=submit]:hover {
+    background-color: var(--ClubAutoMarron);
+    color: var(--ClubAutoNoir);
+    cursor: pointer;
+}
+
+#buttonBox {
+    grid-area: button;
+    display: flex;
+    justify-content: center;
+}
+
+.flexContCol label {
+    font-weight: bold;
+    margin-bottom: 15px;
+
+}
+
+.flexContCol input {
+    background-color: #ECEFF3;
+    border: none;
+    height: 6vh;
+}
+
+.flexContCol textarea {
+    background-color: #ECEFF3;
+    border: none;
+    height: 20vh;
+    width: 100%;
+}
+
+
+
+/*Fin formulaire*/
+
+/************************************4- SPECIFIQUE SINGLE CAR******************************************************/
+
+/*Breadcrumbs*/
+
+.breadcrumbs {
+    max-width: var(--ClubAutoInnerWidth);
+    display: flex;
+    border-bottom: #ECEFF3 1px solid;
+    align-content: flex-start;
+    margin: 0 auto;
+}
+
+.breadcrumbs li a {
+    text-decoration: none;
+    color: #aeb1b5;
+    font-size: 0.75em;
+}
+
+.breadcrumbs li+li:before {
+    padding: 8px;
+    color: #aeb1b5;
+    content: "/\00a0";
+}
+
+.breadcrumbs li a:hover {
+    color: var(--ClubAutoNoir);
+    text-decoration: underline;
+}
+
+#carSubContent {
+    width: 90%;
+    margin: 0 auto;
+    color: var(--ClubAutoNoir);
+}
+
+/*Fin breadcrumbs*/
+
+
+#mainSingleCar {
+    max-width: var(--ClubAutoInnerWidth);
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+}
+
+.singleCarWrapper {
+    max-width: var(--ClubAutoInnerWidth);
+    display: flex;
+    flex-direction: column;
+    color: var(--ClubAutoNoir);
+}
+
+.singleCarWrapper {
+    margin: 0 auto;
+}
+
+#singleCarImg {
+    width: 90%;
+    margin: 15px auto;
+}
+
+#onglets {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--ClubAutoNoir);
+    width: 90%;
+    margin: 0 auto;
+    padding: 0;
+}
+
+.itemOnglets {
+    text-align: center;
+    background-color: var(--ClubAutoNoir);
+    transition: border-top 0.4s, background-color 0.5s;
+    display: flex;
+    margin: 0;
+    height: 60px;
+    justify-content: center;
+    align-items: center;
+}
+
+.itemOnglets:hover {
+    border-top: 4px solid var(--ClubAutoMarron);
+    background-color: var(--ClubAutoGris);
+    cursor: pointer;
+}
+
+
+.itemOnglets:hover>a {
+    color: var(--ClubAutoNoir);
+}
+
+.itemOnglets a {
+    text-decoration: none;
+    color: var(--ClubAutoBlanc);
+    font-weight: bold;
+    transition: color 0.7s;
+    display: flex;
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+#quote {
+    color: var(--ClubAutoGris);
+    font-style: italic;
+    padding-left: 30px;
+    border-left: 5px solid var(--ClubAutoMarron);
+    color: grey;
+}
+
+/************************************5-  MEDIA QUERIES ******************************************************/
+
+@media screen and (min-width: 768px) {
+
+    .isFixed {
+        position: fixed;
+        top: 5px;
+        max-width: var(--ClubAutoMaxWidth);
+        width: 100%;
+    }
+
+
+    .isBigger {
+        font-size: 1.45vw;
+    }
+
+    /*HEADER + NAVIGATION*/
+
+    .mobileMenu {
+        display: none;
+    }
+
+    #mainTitle,
+    #adress,
+    #horaires,
+    #headerSocials {
+        display: unset;
+    }
+
+    #mainTitle {
+        align-self: center;
+    }
+
+    #mainTitle h1 {
+        align-self: center;
+        margin-left: 0;
+        padding-left: 0;
+    }
+
+    #headInfos {
+        max-width: var(--ClubAutoInnerWidth);
+        display: grid;
+        grid-template-columns: 1.5fr repeat(4, 1fr);
+        justify-items: start;
+        align-items: start;
+        color: var(--ClubAutoBlanc);
+        gap: 15px;
+        margin: 0 auto;
+        font-size: 1.2vw;
+    }
+
+    #headInfos div {
+        margin-top: 20px;
+    }
+
+    #adress.iconTextGrid {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        align-items: start;
+    }
+
+    #adress.iconTextGrid p {
+        margin-top: 0;
+        margin-left: 2px;
+    }
+
+    #adress.iconTextGrid div {
+        display: flex;
+        flex-direction: column;
+    }
+
+    #headerSocials {
+        display: flex;
+        justify-self: center;
+    }
+
+    .navImgGrid {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr;
+    }
+
+    header nav {
+        background-color: var(--ClubAutoGrisTransp);
+        grid-column: 1;
+        grid-row: 1;
+        z-index: 999;
+        margin-top: 0;
+        height: fit-content;
+    }
+
+    #wrapMenu {
+        position: static;
+        display: flex;
+        flex-direction: row;
+        background-color: var(--ClubAutoGrisTransp);
+        height: 60px;
+        justify-content: flex-end;
+        align-content: center;
+        flex-wrap: wrap;
+        font-weight: bolder;
+        margin-bottom: 0;
+        width: auto;
+        margin-top: 0;
+    }
+
+
+    #wrapMenu li {
+        font-size: 1em;
+        border: none;
+        display: unset;
+        margin: 0;
+        padding: 0;
+        min-width: 10%;
+        text-align: center;
+    }
+
+    #wrapMenu:first-child {
+        margin-top: 0;
+    }
+
+    #wrapMenu li:last-child {
+        margin-right: 83px;
+    }
+
+    #wrapMenu li a:hover {
+        border: none;
+        color: var(--ClubAutoBlanc);
+        background-color: var(--ClubAutoMarron);
+    }
+
+    #wrapMenu li a {
+        text-decoration: none;
+        align-self: center;
+        color: var(--ClubAutoNoir);
+        transition: color 0.7s, background-color 0.5s;
+    }
+
+    #mainImg {
+        display: unset;
+        width: 100%;
+        object-fit: cover;
+        object-position: 50% 33%;
+        grid-row: 1;
+        grid-column: 1;
+        transition: height 1s ease;
+    }
+
+
+    /*FIN HEADER + NAVIGATION*/
+
+    /*************MQ Spécique accueil******************/
+
+    /*Section présentation*/
+
+    #presentation article {
+        grid-template-rows: 1fr;
+        grid-template-columns: 1fr 1fr;
+        max-width: var(--ClubAutoInnerWidth);
+    }
+
+    /*Fin Section présentation*/
+
+    /*Section vente-loc*/
+
+    #saleOrLoc {
+        flex-direction: row;
+        justify-content: center;
+        background-image: url("../images/vente-location-800.webp");
+    }
+
+    .saleOrLocCard {
+        width: 45%;
+        margin-top: 10vh;
+        margin-bottom: 10vh;
+    }
+
+    .saleOrLocCard h2 {
+        max-width: 80%;
+        margin: 5% auto;
+    }
+
+    .saleOrLocCard p {
+        color: var(--ClubAutoBlanc);
+        max-width: 80%;
+        margin: 10px auto;
+    }
+
+
+    /*Fin Section vente-loc*/
+
+    /*Section new cars*/
+
+    #carsWrapper {
+        flex-direction: row;
+        gap: 20px;
+        justify-content: space-around;
+    }
+
+    .cardCars {
+        width: 30%;
+    }
+
+    .cardCarsInfo {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .priceTag {
+        margin-right: 10px;
+    }
+
+    /*Fin section new cars*/
+
+
+    /*Section pourquoi nous*/
+
+    #whyUsWrapper {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    /*Fin section pourquoi nous*/
+
+    /*Section conclusion*/
+    #conclusion article {
+        margin-left: 15%;
+    }
+
+    #conclusion {
+        background-image: url("../images/vehicule3-800.webp");
+    }
+
+    /*Section conclusion*/
+
+    /*************Fin MQ Spécique accueil******************/
+
+    /*FOOTER*/
+    #footerInfo {
+        max-width: var(--ClubAutoInnerWidth);
+        margin: 0 auto;
+        font-size: .9rem;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: 1fr;
+        justify-items: center;
+        gap: 20px;
+    }
+
+    .info p {
+        font-size: 1.3vw;
+    }
+
+
+
+    /*FIN FOOTER*/
+
+    /***********MQ Page contact*****************/
+
+    .mainTitleOtherPages {
+        font-size: 1em;
+        align-self: center;
+        position: unset;
+        height: unset;
+    }
+
+    .mainTitleOtherPages h1 {
+        margin-left: 0;
+        padding-left: 0;
+    }
+
+    #contactContent {
+        min-height: 60vh;
+    }
+
+    #contactForm {
+        display: grid;
+        grid-template-areas: "title title title"
+            "inputs inputs textarea"
+            "inputs inputs textarea"
+            "void void button";
+    }
+
+    #contactForm p {
+        grid-area: title;
+        font-size: 2.5em;
+    }
+
+    #contactForm input[type=submit] {
+        grid-area: button;
+        justify-self: center;
+    }
+
+    #inputsWrapper {
+        grid-area: inputs;
+        display: contents;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 2%;
+    }
+
+    .flexContCol textarea {
+        height: 100%;
+    }
+
+    #messageBox {
+        grid-area: textarea;
+    }
+
+    #buttonBox {
+        justify-content: start;
+    }
+
+
+
+    /***********Fin MQ Page contact*****************/
+
+    /**************MQ Single car**********************/
+
+    #mainSingleCar {
+        max-width: 60%;
+        margin-left: 83px;
+    }
+
+    .singleCarWrapper {
+        margin-left: 35px;
+    }
+
+    #onglets {
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    .itemOnglets {
+        width: 100%;
+    }
+
+    /*Fin MQ Single car*/
+
+}
+
+@media screen and (min-width: 1200px) {
+
+    .isBigger {
+        font-size: 1.3em;
+    }
+
+    #headInfos {
+        font-size: 1em;
+    }
+
+    .info p {
+        font-size: 1em;
+    }
+
+    #saleOrLoc {
+        flex-direction: row;
+        justify-content: center;
+        background-image: url("../images/vente-location-1500.webp");
+    }
+
+
+    #conclusion {
+        background-image: url("../images/vehicule3-1500.webp");
+    }
+
+}
